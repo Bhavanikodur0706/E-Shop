@@ -25,11 +25,11 @@ const Cart = () => {
             <div className="w-full md:w-2/3">
               {/* Table Header */}
               <div className="grid grid-cols-5 gap-4 bg-white-200 p-3 rounded-md font-semibold text-gray-700">
-                <p>Product</p>
-                <p>Price</p>
-                <p>Quantity</p>
-                <p>Subtotal</p>
-                <p>Remove</p>
+                <p className='sm:text-sm'>Product</p>
+                <p className='sm:text-sm'>Price</p>
+                <p className='sm:text-sm'>Quantity</p>
+                <p className='sm:text-sm'>Subtotal</p>
+                <p className='sm:text-sm'>Remove</p>
               </div>
 
               {/* Cart Items */}
