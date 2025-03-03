@@ -1,10 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { FaSearch, FaShoppingCart, FaUser } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-
+import Login from './Login'
+import Register from './Register'
+import Modal from './Modal'
 const Navbar = () => {
   const products = useSelector((state) => state.cart.products)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isLogin, setIsLogin] = useState(true)
+
   // console.log('products from cart' , products);
   return (
     <nav className='bg-white shadow-md'>
@@ -27,7 +32,7 @@ const Navbar = () => {
             </span>
           )}
           </Link>
-          <button className='hidden md:block'>login/register</button>
+          <button className='hidden md:block' onClick={()=>setIsModalOpen(true)}>login/register</button>
           <button className='block md:hidden'><FaUser/></button>
         </div>
       </div>
@@ -37,6 +42,9 @@ const Navbar = () => {
         <Link to='/' className='hover:underline'>About</Link>
         <Link to='/' className='hover:underline'>Contact</Link>
       </div>
+      <Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}>
+        {isLogin ? <Login/> : <Register/>}
+      </Modal>
     </nav>
 
   )
