@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Categories } from "../assets/mockData";
-import HeroImage from "../assets/hero-page.png";
+import HeroImage from "../assets/hero-page.jpg";
 import InfoSection from "../components/InfoSection";
 import CategorySection from "../components/CategorySection";
 import ProductCard from "../components/ProductCard";
@@ -33,13 +33,13 @@ const Home = () => {
       <img
         src={HeroImage}
         alt="hero-image"
-        className="h-full w-full object-cover rounded-lg"
+        className="h-full w-full object-cover rounded-lg bg-cover bg-center brightness-50"
       />
       <div className="absolute top-12 sm:top-16 left-4 sm:left-8">
-        <p className="text-xl sm:text-3xl font-bold uppercase py-1 sm:py-2">
+        <p className="text-xl sm:text-3xl font-bold uppercase py-1 sm:py-2 text-white">
           Welcome to EShop
         </p>
-        <p className="text-lg sm:text-3xl font-medium uppercase py-1 sm:py-2">
+        <p className="text-lg sm:text-3xl font-medium uppercase py-1 sm:py-2 text-white">
           Where the world comes to shop
         </p>
         <button className="hover:bg-red-700 transform transition-transform duration-300 hover:scale-105 text-white font-bold px-4 sm:px-6 py-2 my-2 sm:my-4 border border-white-600 bg-red-600">

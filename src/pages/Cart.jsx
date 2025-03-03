@@ -11,7 +11,7 @@ const Cart = () => {
   const dispatch = useDispatch();
   const [address, setAddress] = useState('Main Street');
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const Navigate = useNavigate()
+  const navigate = useNavigate()
 
   return (
     <div className="container mx-auto p-4">
@@ -107,7 +107,7 @@ const Cart = () => {
               </button>
 
               {/* Checkout Button */}
-              <button className="mt-4 w-full bg-red-600 hover:bg-red-700 text-white py-2 rounded-md text-sm md:text-lg" onClick={() => Navigate('/checkout')}>
+              <button className="mt-4 w-full bg-red-600 hover:bg-red-700 text-white py-2 rounded-md text-sm md:text-lg" onClick={() => navigate('/checkout')}>
                 Proceed to Checkout
               </button>
             </div>

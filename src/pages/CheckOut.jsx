@@ -1,8 +1,9 @@
 import { useSelector } from 'react-redux'
 import { useState } from 'react'
 import { FaAngleUp, FaAngleDown } from 'react-icons/fa'
+import { useNavigate } from 'react-router-dom'
 
-const CheckOut = () => {
+const CheckOut = ({setOrder}) => {
   const [billingToggle, setBillingToggle] = useState(true)
   const [shippingToggle, setShippingToggle] = useState(true)
   const [paymentToggle, setPaymentToggle] = useState(true)
@@ -14,6 +15,19 @@ const CheckOut = () => {
   })
 
   const cart = useSelector(state => state.cart)
+  const navigate = useNavigate()
+
+  const handleOrder = ()=>{
+    const newOrder = {
+      products : cart.products,
+      orderNumber : '9874667',
+      shippingInformation : shippingInfo,
+      totalPrice : cart.totalPrice
+    }
+    setOrder(newOrder)
+    navigate('/order')
+      
+  }
 
   return (
     <div className="container mx-auto py-8 min-h-98 px-4 md:px-16 lg:px-24">
@@ -124,7 +138,8 @@ const CheckOut = () => {
             <span>Total Price:</span>
             <span>${cart.totalPrice.toFixed(2)}</span>
           </div>
-          <button className="w-full bg-red-600 text-white py-2 md:py-3 rounded-lg font-semibold hover:bg-red-700 transition">
+          <button onClick={handleOrder} 
+          className="w-full bg-red-600 text-white py-2 md:py-3 rounded-lg font-semibold hover:bg-red-700 transition">
             Place Order
           </button>
         </div>
