@@ -1,6 +1,6 @@
 import React from "react";
 
-const Login = () => {
+const Login = ({openSignup}) => {
   return (
     <div className="flex items-center justify-center min-h-screen bg-transparent bg-opacity-50">
       <div className="bg-white p-6 rounded-lg shadow-lg w-96">
@@ -39,13 +39,12 @@ const Login = () => {
             <button className="w-full bg-red-500 text-white py-2 rounded-md hover:bg-red-600 transition">
               Login
             </button>
+            {/* <Link to='/register'>Sign Up</Link> */}
           </div>
         </form>
         <div className="text-center text-sm">
           <span>Don't have an account?</span>
-          <a href="#" className="text-red-500 ml-1 hover:underline">
-            Sign Up
-          </a>
+           <button className="text-red-500 ml-1 hover:underline" onClick={openSignup}>Sign Up</button>   
         </div>
       </div>
     </div>

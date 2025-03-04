@@ -1,14 +1,34 @@
 import React, { useState } from 'react'
 import { FaSearch, FaShoppingCart, FaUser } from 'react-icons/fa'
-import { Link } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { Link, useNavigate } from 'react-router-dom'
+import { useSelector,useDispatch } from 'react-redux'
 import Login from './Login'
 import Register from './Register'
 import Modal from './Modal'
+import { setSearchTerm } from '../redux/productSlice'
 const Navbar = () => {
   const products = useSelector((state) => state.cart.products)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [isLogin, setIsLogin] = useState(true)
+  const [search, setSearch] = useState()
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  
+  const handleSubmit =(e)=>{
+    e.preventDefault()
+    dispatch(setSearchTerm(search))
+    navigate('/filtered-data')
+  }
+
+  const openSignUp =()=>{
+    setIsLogin(false)
+    setIsModalOpen(true)
+  }
+  const openLogin =()=>{
+    setIsLogin(true)
+    setIsModalOpen(true)
+  }
+
 
   // console.log('products from cart' , products);
   return (
@@ -18,8 +38,8 @@ const Navbar = () => {
           <Link to='/'>EShop</Link>
         </div>
         <div className='relative flex-1 mx-4'>
-          <form>
-            <input type="text" placeholder='search product' className='w-full border px-4 py-2 rounded'/>
+          <form onSubmit={handleSubmit}>
+            <input type="text" placeholder='search product' className='w-full border px-4 py-2 rounded' onChange={(e)=>setSearch(e.target.value)}/>
             <FaSearch className='absolute top-3 right-3 text-red-500'/>
           </form>
         </div>
@@ -43,7 +63,7 @@ const Navbar = () => {
         <Link to='/' className='hover:underline'>Contact</Link>
       </div>
       <Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}>
-        {isLogin ? <Login/> : <Register/>}
+        {isLogin ? <Login openSignUp={openSignUp}/> : <Register openLogin={openLogin}/>}
       </Modal>
     </nav>
 

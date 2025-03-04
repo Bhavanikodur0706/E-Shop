@@ -1,6 +1,6 @@
 import React from "react";
 
-const Register = () => {
+const Register = ({openLogin}) => {
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
       <div className="bg-white p-6 rounded-lg shadow-lg w-96">
@@ -44,8 +44,8 @@ const Register = () => {
         </form>
         <div className="text-center text-sm">
           <span>Already have an account?</span>
-          <a href="#" className="text-red-500 ml-1 hover:underline">
-            Login Up
+          <a href="#" className="text-red-500 ml-1 hover:underline" onClick={openLogin}>
+            Login
           </a>
         </div>
       </div>
