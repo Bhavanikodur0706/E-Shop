@@ -62,7 +62,7 @@ const Navbar = () => {
         <Link to='/' className='hover:underline'>About</Link>
         <Link to='/' className='hover:underline'>Contact</Link>
       </div>
-      <Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}>
+      <Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} bgColor="bg-transparent">
         {isLogin ? <Login openSignUp={openSignUp}/> : <Register openLogin={openLogin}/>}
       </Modal>
     </nav>

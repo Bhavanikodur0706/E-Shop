@@ -114,7 +114,7 @@ const Cart = () => {
           </div>
 
           {/* Modal for Change Address */}
-          <Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}>
+          <Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} bgColor="bg-white">
             <ChangeAddress setAddress={setAddress} setIsModalOpen={setIsModalOpen} />
           </Modal>
         </div>
