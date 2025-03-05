@@ -2,6 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { addtoCart } from '../redux/cartSlice'
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+// Initialize toast notifications once in your app
+import { ToastContainer } from "react-toastify";
 
 const ProductDetail = () => {
     const { id } = useParams();
@@ -9,11 +13,28 @@ const ProductDetail = () => {
     const [product, setProduct] = useState();
     //handling add to cart
     const dispatch = useDispatch()
-    const handleClick = (e, product) => {
+    // const handleClick = (e, product) => {
+    //     e.stopPropagation()
+    //     e.preventDefault()
+    //     dispatch(addtoCart(product))
+    //     alert('Product added successfully!!')
+    // }
+    const handleClick = (e, product)=>{
         e.stopPropagation()
         e.preventDefault()
         dispatch(addtoCart(product))
-        alert('Product added successfully!!')
+        // alert('Product added successfully!!')
+        // Show toast notification
+        toast.success("Product added successfully!", {
+          position: window.innerWidth < 768 ? "bottom-center" : "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          theme: "colored",
+          style: { fontSize: window.innerWidth < 768 ? "12px" : "16px" }, // Smaller font for mobile
+        });
     }
     useEffect(() => {
         const newProduct = products.find(product => product.id === parseInt(id));
@@ -24,6 +45,7 @@ const ProductDetail = () => {
 
     return (
         <div className="container mx-auto p-4 md:p-8">
+            <ToastContainer />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                 {/* Image Section */}
                 <div className="flex justify-center">
