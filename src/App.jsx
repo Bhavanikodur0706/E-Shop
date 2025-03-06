@@ -12,6 +12,8 @@ import CheckOut from "./pages/CheckOut";
 import Order from "./pages/Order";
 import FilterData from "./pages/FilterData";
 import ProductDetail from "./pages/ProductDetail";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
 
 function App() {
   const [order, setOrder] = useState(null)
@@ -32,6 +34,8 @@ function App() {
         <Route path="/order" element={<Order order={order}/>} />
         <Route path="/filtered-data" element={<FilterData />} />
         <Route path="/product/:id" element={<ProductDetail />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
       <Footer />
     </>

@@ -59,8 +59,8 @@ const Navbar = () => {
       <div className='flex items-center justify-center py-4 space-x-10 text-sm font-bold'>
         <Link to='/' className='hover:underline'>Home</Link>
         <Link to='/shop' className='hover:underline'>Shop</Link>
-        <Link to='/' className='hover:underline'>About</Link>
-        <Link to='/' className='hover:underline'>Contact</Link>
+        <Link to='/about' className='hover:underline'>About</Link>
+        <Link to='/contact' className='hover:underline'>Contact</Link>
       </div>
       <Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} bgColor="bg-transparent">
         {isLogin ? <Login openSignUp={openSignUp}/> : <Register openLogin={openLogin}/>}
